@@ -1,0 +1,214 @@
+/* ===== Account Page ===== */
+.account-page {
+  position: fixed;
+  inset: 0;
+  background: var(--gray-light);
+  z-index: 500;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform .4s;
+  display: flex;
+  flex-direction: column;
+}
+.account-page.active { transform: translateX(0); }
+
+.account-header {
+  background: linear-gradient(135deg, var(--black) 0%, #2a2a2a 100%);
+  color: var(--white);
+  padding: 25px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.account-header h2 { font-size: 22px; }
+.account-header button {
+  color: var(--white);
+  font-size: 24px;
+  padding: 8px 12px;
+}
+
+/* ===== Profile Card ===== */
+.profile-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 25px;
+  margin: -40px 20px 20px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  width: calc(100% - 40px);
+}
+.profile-avatar {
+  width: 90px; height: 90px;
+  background: var(--gold);
+  color: var(--black);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 40px; font-weight: 900;
+  margin: 0 auto 15px;
+  border: 4px solid var(--white);
+  box-shadow: 0 5px 20px rgba(255,184,0,0.4);
+}
+.profile-card h3 { font-size: 22px; margin-bottom: 5px; }
+.profile-card p { color: #888; font-size: 14px; }
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-light);
+}
+.stat-item { text-align: center; }
+.stat-item strong {
+  display: block;
+  font-size: 22px;
+  color: var(--gold-dark);
+  font-weight: 900;
+}
+.stat-item span { font-size: 12px; color: #888; }
+
+/* ===== Account Tabs ===== */
+.account-tabs {
+  display: flex;
+  gap: 5px;
+  padding: 10px 20px;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-light);
+  overflow-x: auto;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  scrollbar-width: none;
+}
+.account-tabs::-webkit-scrollbar { display: none; }
+.acc-tab {
+  padding: 12px 22px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  color: #888;
+  transition: all .3s;
+  background: transparent;
+  font-family: inherit;
+}
+.acc-tab.active {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* ===== Account Content ===== */
+.account-content {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px 40px;
+  width: 100%;
+}
+.acc-panel { display: none; animation: fadeIn .4s; }
+.acc-panel.active { display: block; }
+
+/* ===== Orders ===== */
+.order-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: var(--shadow);
+}
+.order-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--gray-light);
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.order-num {
+  font-weight: 900;
+  font-size: 17px;
+  color: var(--gold-dark);
+}
+.order-date { font-size: 13px; color: #888; }
+.order-status {
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.status-pending { background: #FFF3CD; color: #856404; }
+.status-shipped { background: #CCE5FF; color: #004085; }
+.status-delivered { background: #D4EDDA; color: #155724; }
+
+.order-items { margin-bottom: 15px; }
+.order-item-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 900;
+  padding-top: 15px;
+  border-top: 2px solid var(--gray-light);
+}
+.order-total span:last-child { color: var(--gold-dark); }
+
+/* ===== Settings Form ===== */
+.settings-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+}
+.settings-card .form-group { margin-bottom: 18px; }
+.settings-card .form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.settings-card input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 2px solid var(--gray-light);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  background: var(--white);
+  color: var(--black);
+  transition: border-color .3s;
+}
+.settings-card input:focus { border-color: var(--gold); }
+
+/* ===== Empty State ===== */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+.empty-state .icon { font-size: 70px; margin-bottom: 15px; }
+.empty-state h3 { font-size: 20px; color: var(--black); margin-bottom: 8px; }
+.empty-state p { margin-bottom: 20px; }
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  .profile-card { padding: 20px 15px; margin: -30px 15px 15px; }
+  .profile-avatar { width: 70px; height: 70px; font-size: 30px; }
+  .profile-card h3 { font-size: 18px; }
+  .stat-item strong { font-size: 18px; }
+  .account-content { padding: 0 15px 30px; }
+  .order-card { padding: 15px; }
+  .settings-card { padding: 20px; }
+  }
