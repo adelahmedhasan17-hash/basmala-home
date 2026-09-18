@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFB800">
+  <meta name="description" content="متجر بسمله هوم - أدوات منزلية أصلية بأفضل الأسعار في مصر">
+  <title>بسمله هوم | أدوات منزلية بأفضل الأسعار</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/product.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-wrap">
+    <a href="#" class="logo" onclick="goHome(event)">
+      <div class="logo-icon">ب</div>
+      <span class="logo-text">بسمله <span>هوم</span></span>
+    </a>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+      <button onclick="doSearch()" aria-label="بحث">🔍</button>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="toggleDarkMode()" title="الوضع الليلي">🌙</button>
+      <button class="icon-btn" onclick="openAuthModal()" title="حسابي">
+        👤 <span id="userName"></span>
+      </button>
+      <button class="icon-btn" onclick="openAccount()" title="نقاطي">
+        🎁 <span class="badge" id="pointsCount">0</span>
+      </button>
+      <button class="icon-btn" onclick="openWishlist()" title="المفضلة">
+        ❤️ <span class="badge" id="wishCount">0</span>
+      </button>
+      <button class="icon-btn cart-btn" onclick="openCart()" title="السلة">
+        🛒 <span class="badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+  <nav class="cat-bar">
+    <div class="container cat-scroll">
+      <button class="cat-pill active" onclick="filterCat('all', this)">الكل</button>
+      <button class="cat-pill" onclick="filterCat('أدوات كهربائية', this)">🔌 كهربائية</button>
+      <button class="cat-pill" onclick="filterCat('أطقم صيني', this)">🍽️ صيني</button>
+      <button class="cat-pill" onclick="filterCat('أدوات مطبخ', this)">🥄 مطبخ</button>
+      <button class="cat-pill" onclick="filterCat('أطقم سفرة', this)">🍴 سفرة</button>
+      <button class="cat-pill" onclick="filterCat('مستلزمات الحمام', this)">🚿 حمام</button>
+      <button class="cat-pill" onclick="filterCat('ديكور المنزل', this)">🖼️ ديكور</button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <span class="hero-tag">✨ عروض الأسبوع</span>
+      <h1>كل أدوات بيتك<br>في مكان واحد</h1>
+      <p>توصيل سريع لكل محافظات مصر • دفع آمن • إرجاع مجاني</p>
+      <button class="btn-primary" onclick="scrollToProducts()">تسوق الآن 🛍️</button>
+    </div>
+    <div class="hero-img">🏠✨</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">تسوق حسب الفئة</h2>
+    <div class="cats-grid">
+      <div class="cat-card" onclick="filterCat('أدوات كهربائية')">
+        <div class="cat-emoji">🔌</div>
+        <h3>أدوات كهربائية</h3>
+        <p>خلاط • غلاية • ميكروويف</p>
+      </div>
+      <div class="cat-card" onclick="filterCat('أطقم صيني')">
+        <div class="cat-emoji">🍽️</div>
+        <h3>أطقم صيني</h3>
+        <p>طقم 24 قطعة • أكواب</p>
+      </div>
+      <div class="cat-card" onclick="filterCat('أدوات مطبخ')">
+        <div class="cat-emoji">🥄</div>
+        <h3>أدوات مطبخ</h3>
+        <p>حلل • طاسات • ملاعق</p>
+      </div>
+      <div class="cat-card" onclick="filterCat('أطقم سفرة')">
+        <div class="cat-emoji">🍴</div>
+        <h3>أطقم سفرة</h3>
+        <p>ملاعق • شوك • سكاكين</p>
+      </div>
+      <div class="cat-card" onclick="filterCat('مستلزمات الحمام')">
+        <div class="cat-emoji">🚿</div>
+        <h3>مستلزمات الحمام</h3>
+        <p>طقم حمام • موزع صابون</p>
+      </div>
+      <div class="cat-card" onclick="filterCat('ديكور المنزل')">
+        <div class="cat-emoji">🖼️</div>
+        <h3>ديكور المنزل</h3>
+        <p>لوحات • فازات • شموع</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="productsSection">
+  <div class="container">
+    <h2 class="section-title" id="productsTitle">الأكثر مبيعاً</h2>
+    <div class="products-grid" id="productsGrid"></div>
+    <p class="empty-msg" id="emptyMsg" style="display:none;">لا توجد منتجات مطابقة 🔍</p>
+  </div>
+</section>
+
+<section class="section features-section">
+  <div class="container">
+    <h2 class="section-title">لماذا بسمله هوم؟</h2>
+    <div class="features-grid">
+      <div class="feature"><div class="f-icon">🚚</div><h3>توصيل سريع</h3><p>خلال 2-3 أيام</p></div>
+      <div class="feature"><div class="f-icon">🔒</div><h3>دفع آمن</h3><p>100% مضمون</p></div>
+      <div class="feature"><div class="f-icon">↩️</div><h3>إرجاع مجاني</h3><p>خلال 14 يوم</p></div>
+      <div class="feature"><div class="f-icon">💬</div><h3>دعم 24/7</h3><p>خدمة عملاء ممتازة</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="logo">
+        <div class="logo-icon">ب</div>
+        <span class="logo-text">بسمله <span>هوم</span></span>
+      </div>
+      <p>أدوات منزلية أصلية بأفضل الأسعار في مصر.</p>
+    </div>
+    <div>
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#">من نحن</a></li>
+        <li><a href="#">اتصل بنا</a></li>
+        <li><a href="#">سياسة الإرجاع</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>الفئات</h4>
+      <ul>
+        <li><a href="#">أدوات كهربائية</a></li>
+        <li><a href="#">أدوات مطبخ</a></li>
+        <li><a href="#">ديكور</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>تواصل معنا</h4>
+      <ul>
+        <li>📧 info@basmalahome.com</li>
+        <li>📱 +20 100 000 0000</li>
+        <li>📍 القاهرة، مصر</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 بسمله هوم — جميع الحقوق محفوظة</p>
+  </div>
+</footer>
+
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="drawer-header">
+    <h3>🛒 سلة التسوق</h3>
+    <button onclick="closeCart()">✕</button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-footer" id="cartFooter"></div>
+</aside>
+
+<div class="modal-overlay" id="authModal" onclick="closeAuthModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeAuthModal()">✕</button>
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchTab('login', this)">دخول</button>
+      <button class="auth-tab" onclick="switchTab('register', this)">تسجيل جديد</button>
+    </div>
+    <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+      <input type="email" placeholder="الإيميل" required>
+      <div class="pass-wrap">
+        <input type="password" id="loginPass" placeholder="كلمة السر" required>
+        <button type="button" onclick="togglePass('loginPass')">👁️</button>
+      </div>
+      <label class="remember"><input type="checkbox" id="rememberMe"> تذكرني</label>
+      <button type="submit" class="btn-primary">تسجيل الدخول</button>
+    </form>
+    <form id="registerForm" class="auth-form" style="display:none" onsubmit="handleRegister(event)">
+      <input type="text" placeholder="الاسم الكامل" required>
+      <input type="email" placeholder="الإيميل" required>
+      <input type="tel" placeholder="رقم الموبايل" required>
+      <div class="pass-wrap">
+        <input type="password" id="regPass" placeholder="كلمة السر" required>
+        <button type="button" onclick="togglePass('regPass')">👁️</button>
+      </div>
+      <button type="submit" class="btn-primary">إنشاء حساب</button>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div id="splash">
+  <div class="splash-logo">
+    <div class="splash-circle">ب</div>
+    <h1>بسمله <span>هوم</span></h1>
+    <p>أدوات منزلية بأفضل الأسعار</p>
+  </div>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/product-modal.js"></script>
+<script src="js/checkout.js"></script>
+<script src="js/account.js"></script>
+<script src="js/router.js"></script>
+<script src="js/pwa.js"></script>
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('splash').classList.add('hide'), 800);
+  });
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-primary, .add-btn, .icon-btn');
+    if (!btn) return;
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + x + 'px;top:' + y + 'px;';
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.section, .cat-card, .product-card, .feature')
+    .forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+</script>
+</body>
+  </html>
